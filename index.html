@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TsinjoTravel - Agence de voyage Madagascar</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #18bc9c;
+            --accent-color: #f39c12;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white;
+        }
+        
+        .navbar-brand span {
+            color: var(--accent-color);
+        }
+        
+        .nav-link {
+            color: white !important;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border: none;
+            padding: 8px 20px;
+        }
+        
+        .btn-primary:hover {
+            background-color: #149a80;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://www.nomade-aventure.com/Content/Images/ImgProduits/MDG/4831/755101_QuatreTiers.ori.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
+            animation: zoomInOut 15s infinite alternate;
+            background-size: cover;
+            color: white;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        /* Tours Section */
+        .tours-section {
+            padding: 80px 0;
+        }
+        
+        .tour-card {
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .tour-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .tour-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .tour-info {
+            padding: 20px;
+        }
+        
+        .tour-price {
+            color: var(--secondary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .tour-location {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        /* Testimonials */
+        .testimonial-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 15px;
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-right: 15px;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-title {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--light-color);
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Tsinjo<span>Travel</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#circuits">Circuits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reservation">Réservation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <a href="#reservation" class="btn btn-primary ms-lg-3">Réserver</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Découvrez les merveilles de Madagascar</h1>
+                <p>Voyages personnalisés, expériences inoubliables. Laissez-nous vous guider à travers les paysages époustouflants et la culture riche de la Grande Île.</p>
+                <a href="#circuits" class="btn btn-primary me-2">Nos circuits</a>
+                <a href="#contact" class="btn btn-outline-light">Contactez-nous</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.provenexpert.com/5b/18/9ee18d1ffbb2e98d3226451d0d43/madagascar-circuits-tours-agence-de-voyage-pour-madagascar_full_1657787757.jpg" alt="Notre équipe d'experts en voyage à Madagascar" class="img-fluid about-img">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title">À propos de TsinjoTravel</h2>
+                    <p>Fondée en 2010, TsinjoTravel est une agence de voyage malgache spécialisée dans la création d'expériences uniques et authentiques à travers l'île rouge.</p>
+                    <p>Notre équipe de guides locaux passionnés partagera avec vous les secrets les mieux gardés de Madagascar, des plages de sable blanc de Nosy Be aux allées majestueuses des Tsingy de Bemaraha.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Expertise locale depuis plus de 10 ans</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Circuits personnalisables</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Guides francophones certifiés</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Engagement écotouristique</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tours Section -->
+    <section class="tours-section" id="circuits">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Nos circuits populaires</h2>
+                <p>Découvrez nos meilleures expériences de voyage à Madagascar</p>
+            </div>
+            
+            <div class="row">
+                <!-- Tour 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="tour-card">
+                        <div class="tour-img">
+                            <img src="https://www.mahayexpedition.com/wp-content/uploads/2019/08/J2-J3-Grand-Ouest.jpg" alt="Avenue des Baobabs au coucher de soleil avec des arbres géants" class="img-fluid w-100">
+                    <div class="hover-overlay"></div>
+                        </div>
+                        <div class="tour-info">
+                            <h5>Aventure Ouest</h5>
+                            <p class="tour-location"><i class="fas fa-map-marker-alt me-2"></i>Ouest de Madagascar</p>
+                            <p>Découvrez les baobabs légendaires et les formations karstiques des Tsingy dans ce circuit de 7 jours.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="tour-price">À partir de 1 200€</span>
+                                <button class="btn btn-sm btn-primary" onclick="openBookingModal(1)">Réserver</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tour 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="tour-card">
+                        <div class="tour-img">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/feadedeb-efc1-4c12-9f3b-c98d38fc0e6b.png" alt="Plage paradisiaque de Nosy Be avec eau turquoise et cocotiers" class="img-fluid w-100">
+                        </div>
+                        <div class="tour-info">
+                            <h5>Évasion Tropicale</h5>
+                            <p class="tour-location"><i class="fas fa-map-marker-alt me-2"></i>Nosy Be</p>
+                            <p>10 jours de détente sur les plus belles plages de l'île aux parfums, avec excursions en mer incluses.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="tour-price">À partir de 1 500€</span>
+                                <button class="btn btn-sm btn-primary" onclick="openBookingModal(2)">Réserver</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tour 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="tour-card">
+                        <div class="tour-img">
+                            <img src="https://www.ecovoyageurs.com/images/articles/ecotourisme-madagascar.jpg" alt="Forêt tropicale de Ranomafana avec cascades et lémuriens" class="img-fluid w-100">
+                    <div class="hover-overlay"></div>
+                        </div>
+                        <div class="tour-info">
+                            <h5>Expédition Nature</h5>
+                            <p class="tour-location"><i class="fas fa-map-marker-alt me-2"></i>Sud-Est</p>
+                            <p>15 jours d'exploration des parcs nationaux pour observer la faune et flore unique de Madagascar.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="tour-price">À partir de 2 000€</span>
+                                <button class="btn btn-sm btn-primary" onclick="openBookingModal(3)">Réserver</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="#circuits" class="btn btn-outline-primary">Voir tous nos circuits</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Ils ont voyagé avec nous</h2>
+                <p>Découvrez les témoignages de nos voyageurs</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card text-center">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/edbc72ec-bade-40c8-8d62-ba11d4736614.png" alt="Portrait de Sophie, cliente satisfaite de 32 ans" class="testimonial-img">
+                        <p class="testimonial-text">"Le circuit Aventure Ouest a dépassé toutes mes attentes. Notre guide était incroyablement compétent et attentionné."</p>
+                        <h5 class="testimonial-author">Sophie D.</h5>
+                        <div class="stars">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card text-center">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80" alt="Portrait de Jean et Marie, couple de voyageurs" class="testimonial-img">
+                        <p class="testimonial-text">"Notre voyage de noces à Nosy Be a été parfaitement organisé par TsinjoTravel. Des souvenirs inoubliables!"</p>
+                        <h5 class="testimonial-author">Jean & Marie</h5>
+                        <div class="stars">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card text-center">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80" alt="Portrait de famille Duval avec deux enfants" class="testimonial-img">
+                        <p class="testimonial-text">"En famille avec deux enfants, nous avons passé 3 semaines extraordinaires. Tout était adapté aux petits comme aux grands."</p>
+                        <h5 class="testimonial-author">Famille Duval</h5>
+                        <div class="stars">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star-half-alt text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section class="contact-section" id="reservation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="section-title">Réservez votre voyage</h2>
+                    <p class="mb-4">Remplissez ce formulaire et nous vous recontacterons dans les plus brefs délais pour finaliser votre réservation.</p>
+                    
+                    <form id="bookingForm" onsubmit="submitBookingForm(event)">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">Prénom</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Nom</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Téléphone</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="tour" class="form-label">Circuit</label>
+                                <select class="form-select" id="tour" required>
+                                    <option value="" selected disabled>Sélectionnez un circuit</option>
+                                    <option value="Aventure Ouest">Aventure Ouest</option>
+                                    <option value="Évasion Tropicale">Évasion Tropicale</option>
+                                    <option value="Expédition Nature">Expédition Nature</option>
+                                    <option value="Autre">Autre (à préciser)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="participants" class="form-label">Nombre de personnes</label>
+                                <input type="number" class="form-control" id="participants" min="1" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Dates souhaitées</label>
+                            <input type="text" class="form-control" id="date" placeholder="JJ/MM/AAAA - JJ/MM/AAAA">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="3" placeholder="Demandes spéciales, commentaires..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+                    </form>
+                </div>
+                
+                <div class="col-lg-6">
+                    <h2 class="section-title">Contactez-nous</h2>
+                    
+                    <div class="contact-info">
+                        <div class="d-flex mb-4">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <div>
+                                <h5>Adresse</h5>
+                                <p>Lot II M 85 Bis, Antsakaviro<br>Antananarivo 101, Madagascar</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex mb-4">
+                            <i class="fas fa-phone contact-icon"></i>
+                            <div>
+                                <h5>Téléphone</h5>
+                                <p>+261 34 12 345 67<br>Lun-Ven: 8h-17h</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex mb-4">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <div>
+                                <h5>Email</h5>
+                                <p>contact@tsinjo-travel.mg</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="map-container">
+                        <img src="https://www.mahayexpedition.com/wp-content/uploads/2020/04/vall%C3%A9e-du-tsaranoro-madagascar-en-famille-380x460.jpg" alt="Carte montrant l'emplacement de notre agence à Antananarivo" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3 class="footer-title">TsinjoTravel</h3>
+                    <p>Votre agence de voyage francophone à Madagascar, spécialiste des circuits sur mesure et expériences authentiques depuis 2010.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h3 class="footer-title">Liens rapides</h3>
+                    <div class="footer-links">
+                        <a href="#home">Accueil</a>
+                        <a href="#circuits">Circuits</a>
+                        <a href="#reservation">Réservation</a>
+                        <a href="#about">À propos</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h3 class="footer-title">Circuits</h3>
+                    <div class="footer-links">
+                        <a href="#">Circuits en groupe</a>
+                        <a href="#">Voyages sur mesure</a>
+                        <a href="#">Séjours balnéaires</a>
+                        <a href="#">Expéditions nature</a>
+                        <a href="#">Circuits thématiques</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p>Abonnez-vous pour recevoir nos offres spéciales et actualités.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Votre email">
+                        <button class="btn btn-outline-light" type="button">S'abonner</button>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4 bg-light">
+            
+            <div class="text-center">
+                <p class="mb-0">© 2023 TsinjoTravel. Tous droits réservés. | <a href="#" class="text-white">Mentions légales</a> | <a href="#" class="text-white">Politique de confidentialité</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTourTitle">Réserver ce circuit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modalTourContent"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <a href="#reservation" class="btn btn-primary">Remplir le formulaire</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Demande envoyée !</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Merci pour votre demande de réservation. Notre équipe va la traiter et vous recontactera dans les plus brefs délais.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Open booking modal with tour details
+        function openBookingModal(tourId) {
+            let title, description, price;
+            
+            switch(tourId) {
+                case 1:
+                    title = "Aventure Ouest";
+                    description = "7 jours de découverte des baobabs légendaires et des formations karstiques des Tsingy de Bemaraha.";
+                    price = "1 200€ par personne";
+                    break;
+                case 2:
+                    title = "Évasion Tropicale";
+                    description = "10 jours de détente sur les plus belles plages de Nosy Be, avec excursions en mer incluses.";
+                    price = "1 500€ par personne";
+                    break;
+                case 3:
+                    title = "Expédition Nature";
+                    description = "15 jours d'exploration des parcs nationaux pour observer la faune et flore unique de Madagascar.";
+                    price = "2 000€ par personne";
+                    break;
+            }
+            
+            document.getElementById('modalTourTitle').textContent = title;
+            document.getElementById('modalTourContent').innerHTML = `
+                <p>${description}</p>
+                <p><strong>Prix:</strong> ${price}</p>
+                <p>Prêt à réserver? Remplissez notre formulaire pour commencer l'organisation de votre voyage.</p>
+            `;
+            
+            document.getElementById('tour').value = title;
+            
+            const modal = new bootstrap.Modal(document.getElementById('bookingModal'));
+            modal.show();
+        }
+        
+        // Submit booking form
+        function submitBookingForm(e) {
+            e.preventDefault();
+            
+            // Here you would normally send the form data to a server
+            // For this example, we'll just show a success message
+            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
+            
+            // Reset form
+            document.getElementById('bookingForm').reset();
+            
+            // Smooth scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
